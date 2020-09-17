@@ -34,10 +34,10 @@ function generatePassword(){
 
     // TO DO ITEM
     // fix it so if something other than a number is put in it lets you retry
-    var lengthOfPassword = parseInt(prompt("How long would you like your password? (Minimum 8 Maximum 126)"));
+    var lengthOfPassword = parseInt(prompt("How long would you like your password? (Minimum 8 Maximum 128)"));
 
     // Checks to make sure the password is in acceptable ranges
-    if(8 <= lengthOfPassword && lengthOfPassword <= 126){
+    if(8 <= lengthOfPassword && lengthOfPassword <= 128){
       alert("password length of "+lengthOfPassword+" has been selected");
       break;
     }
