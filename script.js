@@ -55,6 +55,7 @@ function generatePassword(){
   // Ends the code early if the use has opted to exit
   while(keepGoing){
     
+    let tempchecker = arrCharacterArrs;
     // asks the user for specifications of their password
     var lowerCaseOn = confirmPreference("lower case", lowerCaseArr);
     var upperCaseOn = confirmPreference("upper case", upperCaseArr);
@@ -62,12 +63,16 @@ function generatePassword(){
     var specialOn = confirmPreference("speacial", specialArr);
     
     // incase no characters are selected
-    if(arrCharacterArrs === null){
-      if(!confirm("you must select atleast one type of character to continue.  Would you like to reselect character?")){
-        keepGoing = false;
-        break;
-      }
+    console.log(arrCharacterArrs);
+    if(arrCharacterArrs != tempchecker){
+      break;
     }
+    
+    if(!confirm("you must select atleast one type of character to continue.  Would you like to reselect character?")){
+      keepGoing = false;
+      break;
+    }
+
   }
 
   if(keepGoing){
@@ -129,7 +134,8 @@ function confirmPreference(string, arr){
   }
   return tof;
 }
-// var lowerCaseOn = confirmPreference("lower case", lowerCaseArr);
+
+// Below is code not to be touched
 
 
 var generateBtn = document.querySelector("#generate");
