@@ -110,6 +110,7 @@ function generatePassword(){
   }
 
 }// end of generate password function
+// TO DO : make the password contain all the slected types but in a way that is random
 
 
 // Pulls the first element from a multidimensional array
