@@ -86,24 +86,18 @@ function generatePassword(){
     
     // Begin Password Generation
     for(let i = 0; i < lengthOfPassword-arrCharacterArrs.length; i++){
-      let newTempArr = rngPicker(arrCharacterArrs);
-      let newTempArr2 = newTempArr[1];
-      passwordToSet = passwordToSet+rngPicker(newTempArr2);
+      
+      passwordToSet = passwordToSet+rngPicker((rngPicker(arrCharacterArrs))[1]);
       
     }
 
+    // this code garenties that all selected character types apear
     for (let index = 0; index < arrCharacterArrs.length; index++) {
       passwordToSet = passwordToSet+ rngPicker(arrCharacterArrs[index][1]);
-      console.log(passwordToSet);
     }
-    console.log(passwordToSet);
     return passwordToSet;
 
   }
-
-    
-    
-  
 
 }// end of generate password function
 
