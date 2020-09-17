@@ -26,10 +26,14 @@ var specialArr = ["speacial", "!#$%&*".split('')];
 var arrCharacterArrs = []; 
 var passwordToSet= "";
 
-
+// Start of function being called
 function generatePassword(){
+  // Keepgoing can shut off the code early
   keepGoing= true;
   while (keepGoing){
+
+    // TO DO ITEM
+    // fix it so if something other than a number is put in it lets you retry
     var lengthOfPassword = parseInt(prompt("How long would you like your password? (Minimum 8 Maximum 126)"));
 
     // Checks to make sure the password is in acceptable ranges
@@ -37,7 +41,7 @@ function generatePassword(){
       alert("password length of "+lengthOfPassword+" has been selected");
       break;
     }
-    // Checks if user has pressed cancel 
+    // Checks if user has pressed cancel also non numbers are checked
     if(isNaN(lengthOfPassword)){
       keepGoing= false;
       break;
@@ -59,24 +63,28 @@ function generatePassword(){
     
 
     
-    // To do get confirmation of selected elements 
-    alert("you have elected to have a password that is "+lengthOfPassword+" characters long, which contains the character types: "+getFirstElements(arrCharacterArrs)+".  Now generating password.");
+    // Confirms password parameters
+    if(confirm("you have elected to have a password that is "+lengthOfPassword+" characters long, which contains the character types: "+getFirstElements(arrCharacterArrs)+".  Now generating password.")){
 
-    
-    
-    for(let i = 0; i < lengthOfPassword-arrCharacterArrs.length; i++){
-      let newTempArr = rngPicker(arrCharacterArrs);
-      let newTempArr2 = newTempArr[1];
-      passwordToSet = passwordToSet+rngPicker(newTempArr2);
-      
-    }
-
-    for (let index = 0; index < arrCharacterArrs.length; index++) {
-      passwordToSet = passwordToSet+ rngPicker(arrCharacterArrs[index][1]);
+      // Begin Password Generation
+      for(let i = 0; i < lengthOfPassword-arrCharacterArrs.length; i++){
+        let newTempArr = rngPicker(arrCharacterArrs);
+        let newTempArr2 = newTempArr[1];
+        passwordToSet = passwordToSet+rngPicker(newTempArr2);
+        
+      }
+  
+      for (let index = 0; index < arrCharacterArrs.length; index++) {
+        passwordToSet = passwordToSet+ rngPicker(arrCharacterArrs[index][1]);
+        console.log(passwordToSet);
+      }
       console.log(passwordToSet);
+      return passwordToSet;
+
     }
-    console.log(passwordToSet);
-    return passwordToSet;
+
+    
+    
   }
 
 }// end of generate password function
@@ -113,6 +121,7 @@ function confirmPreference(string, arr){
   }
   return tof;
 }
+// var lowerCaseOn = confirmPreference("lower case", lowerCaseArr);
 
 
 var generateBtn = document.querySelector("#generate");
