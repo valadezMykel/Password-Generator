@@ -48,7 +48,7 @@ function generatePassword(){
       break;
     }
     else if(isNaN(lengthOfPassword)){
-      // Checks if user has enter non numbers are checked
+      // Checks if user has enter non numbers
       alert("Input can only contain numbers");
 
     }else{
@@ -62,6 +62,8 @@ function generatePassword(){
   // Ends the code early if the use has opted to exit
   while(keepGoing){
     
+    // resets the character types selected
+    arrCharacterArrs = [];
     // asks the user for specifications of their password
     confirmPreference("lower case", lowerCaseArr);
     confirmPreference("upper case", upperCaseArr);
@@ -76,6 +78,7 @@ function generatePassword(){
       }
       else{
         alert("Your character selections have been reset");
+        // sssh they will reset at the start of the loop
       }
 
     }
