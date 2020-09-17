@@ -32,22 +32,29 @@ function generatePassword(){
   keepGoing= true;
   while (keepGoing){
 
-    // TO DO ITEM
-    // fix it so if something other than a number is put in it lets you retry
-    var lengthOfPassword = parseInt(prompt("How long would you like your password? (Minimum 8 Maximum 128)"));
+    var lengthOfPassword = prompt("How long would you like your password? (Minimum 8 Maximum 128)");
+    
+    // checks to see if cancel was pressed
+    if (lengthOfPassword === null){
+      alert("Password Creation Canceled");
+      keepGoing = false;
+      break;
+    }
 
     // Checks to make sure the password is in acceptable ranges
+    parseInt(lengthOfPassword);
     if(8 <= lengthOfPassword && lengthOfPassword <= 128){
       alert("password length of "+lengthOfPassword+" has been selected");
       break;
     }
-    // Checks if user has pressed cancel also non numbers are checked
-    if(isNaN(lengthOfPassword)){
-      keepGoing= false;
-      break;
+    else if(isNaN(lengthOfPassword)){
+      // Checks if user has enter non numbers are checked
+      alert("Input can only contain numbers");
+
+    }else{
+      alert("password lenght not within acceptable range");
     }
 
-    alert("password lenght not within acceptable range");
     
   }
   // End of while loop containing password length set up
