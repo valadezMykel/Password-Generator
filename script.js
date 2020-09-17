@@ -53,7 +53,7 @@ function generatePassword(){
   // End of while loop containing password length set up
 
   // Ends the code early if the use has opted to exit
-  if(keepGoing){
+  while(keepGoing){
     
     // asks the user for specifications of their password
     var lowerCaseOn = confirmPreference("lower case", lowerCaseArr);
@@ -61,31 +61,39 @@ function generatePassword(){
     var numbersOn = confirmPreference("numerical", numbersArr);
     var specialOn = confirmPreference("speacial", specialArr);
     
+    // incase no characters are selected
+    if(arrCharacterArrs === null){
+      if(!confirm("you must select atleast one type of character to continue.  Would you like to reselect character?")){
+        keepGoing = false;
+        break;
+      }
+    }
+  }
 
-    
+  if(keepGoing){
     // Confirms password parameters
-    if(confirm("you have elected to have a password that is "+lengthOfPassword+" characters long, which contains the character types: "+getFirstElements(arrCharacterArrs)+".  Now generating password.")){
+    alert("you have elected to have a password that is "+lengthOfPassword+" characters long, which contains the character types: "+getFirstElements(arrCharacterArrs)+".  Now generating password.");
 
-      // Begin Password Generation
-      for(let i = 0; i < lengthOfPassword-arrCharacterArrs.length; i++){
-        let newTempArr = rngPicker(arrCharacterArrs);
-        let newTempArr2 = newTempArr[1];
-        passwordToSet = passwordToSet+rngPicker(newTempArr2);
-        
-      }
-  
-      for (let index = 0; index < arrCharacterArrs.length; index++) {
-        passwordToSet = passwordToSet+ rngPicker(arrCharacterArrs[index][1]);
-        console.log(passwordToSet);
-      }
-      console.log(passwordToSet);
-      return passwordToSet;
-
+    // Begin Password Generation
+    for(let i = 0; i < lengthOfPassword-arrCharacterArrs.length; i++){
+      let newTempArr = rngPicker(arrCharacterArrs);
+      let newTempArr2 = newTempArr[1];
+      passwordToSet = passwordToSet+rngPicker(newTempArr2);
+      
     }
 
-    
-    
+    for (let index = 0; index < arrCharacterArrs.length; index++) {
+      passwordToSet = passwordToSet+ rngPicker(arrCharacterArrs[index][1]);
+      console.log(passwordToSet);
+    }
+    console.log(passwordToSet);
+    return passwordToSet;
+
   }
+
+    
+    
+  
 
 }// end of generate password function
 
