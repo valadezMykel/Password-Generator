@@ -55,30 +55,35 @@ function generatePassword(){
   // Ends the code early if the use has opted to exit
   while(keepGoing){
     
-    let tempchecker = arrCharacterArrs;
     // asks the user for specifications of their password
-    var lowerCaseOn = confirmPreference("lower case", lowerCaseArr);
-    var upperCaseOn = confirmPreference("upper case", upperCaseArr);
-    var numbersOn = confirmPreference("numerical", numbersArr);
-    var specialOn = confirmPreference("speacial", specialArr);
+    confirmPreference("lower case", lowerCaseArr);
+    confirmPreference("upper case", upperCaseArr);
+    confirmPreference("numerical", numbersArr);
+    confirmPreference("speacial", specialArr);
     
-    // incase no characters are selected
-    console.log(arrCharacterArrs);
-    if(arrCharacterArrs != tempchecker){
-      break;
+    // Confirms password parameters with user
+    if(arrCharacterArrs.length > 0){
+      if(confirm("you have elected to have a password that is "+lengthOfPassword+" characters long, which contains the character types: "+getFirstElements(arrCharacterArrs)+".  Would you like to generating password using these characters?")){
+
+        break;
+      }
+      else{
+        alert("Your character selections have been reset");
+      }
+
     }
     
-    if(!confirm("you must select atleast one type of character to continue.  Would you like to reselect character?")){
+    // Show when no character types selected, useres can reslect or quit
+    if(!confirm("you must select atleast one type of character to continue.  Would you like to reselect characters?")){
       keepGoing = false;
       break;
     }
 
-  }
+  }//End of while loop containing character selection
 
   if(keepGoing){
-    // Confirms password parameters
-    alert("you have elected to have a password that is "+lengthOfPassword+" characters long, which contains the character types: "+getFirstElements(arrCharacterArrs)+".  Now generating password.");
-
+    
+    
     // Begin Password Generation
     for(let i = 0; i < lengthOfPassword-arrCharacterArrs.length; i++){
       let newTempArr = rngPicker(arrCharacterArrs);
@@ -128,11 +133,10 @@ function rngPicker(array){
 // used when confirming character type selection
 function confirmPreference(string, arr){
 
-  let tof= confirm("would you like your password to contain " + string + " characters?");
-  if(tof){
+  if(confirm("would you like your password to contain " + string + " characters?")){
     arrCharacterArrs.push(arr);
   }
-  return tof;
+  
 }
 
 // Below is code not to be touched
