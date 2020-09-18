@@ -21,13 +21,15 @@
 var keepGoing = true;
 var lowerCaseArr = ["lower case", "abcdefghijklmnopqrstuvwxyz".split('')];
 var upperCaseArr = ["upper case", "abcdefghijklmnopqrstuvwxyz".toUpperCase().split('')];
-var numbersArr = ["numbers", "1234567890".split('')];
+var numbersArr = ["numbers", "123456789".split('')];
 var specialArr = ["speacial", "!#$%&*".split('')];
 var arrCharacterArrs = []; 
 var passwordToSet= "";
 
 // Start of function being called
 function generatePassword(){
+  // Reset Passord
+  passwordToSet="";
   // Keepgoing can shut off the code early
   keepGoing= true;
   while (keepGoing){
@@ -93,18 +95,31 @@ function generatePassword(){
 
   if(keepGoing){
     
-    
+    console.log(passwordToSet);
     // Begin Password Generation
-    for(let i = 0; i < lengthOfPassword-arrCharacterArrs.length; i++){
+    for(let i = 0; i < lengthOfPassword; i++){
       
       passwordToSet = passwordToSet+rngPicker((rngPicker(arrCharacterArrs))[1]);
       
     }
+    console.log(passwordToSet);
 
     // this code garenties that all selected character types apear
-    for (let index = 0; index < arrCharacterArrs.length; index++) {
-      passwordToSet = passwordToSet+ rngPicker(arrCharacterArrs[index][1]);
+
+    // for (let index = 0; index < arrCharacterArrs.length; index++) {
+    //   passwordToSetTemp = passwordToSetTemp+ rngPicker(arrCharacterArrs[index][1]);
+    // }
+    // return passwordToSet;
+
+
+    for (let j = 0; j < arrCharacterArrs.length; j++) {
+      var portion = Math.floor(lengthOfPassword / arrCharacterArrs.length)
+      console.log(portion);
+      passwordToSet.replace(passwordToSet.charAt(Math.floor(Math.random() * portion)+((portion * j)+1)), rngPicker(arrCharacterArrs[j][1]));
+      
     }
+    console.log(passwordToSet);
+    
     return passwordToSet;
 
   }
