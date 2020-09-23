@@ -33,7 +33,7 @@ var passwordToSet= "";
 function generatePassword(){
   // Reset Passord
   passwordToSet="";
-  // Keepgoing can shut off the code early
+  // Keepgoing can shut off the code early if the user cancles creation
   keepGoing= true;
   while (keepGoing){
 
@@ -43,14 +43,16 @@ function generatePassword(){
     if (lengthOfPassword === null){
       alert("Password Creation Canceled");
       keepGoing = false;
-      return null;
+      
     }
 
     // Checks to make sure the password is in acceptable ranges
     lengthOfPassword = parseInt(lengthOfPassword);
     if(8 <= lengthOfPassword && lengthOfPassword <= 128){
       alert("password length of "+lengthOfPassword+" has been selected");
+      // This is the continue creation break 
       break;
+
     }
     else if(isNaN(lengthOfPassword)){
       // Checks if user has enter non numbers
@@ -111,7 +113,6 @@ function generatePassword(){
     // this code garenties that all selected character types apear
 
     var portion = Math.floor(lengthOfPassword / arrCharacterArrs.length)
-    console.log(portion);
     for (let j = 0; j < arrCharacterArrs.length; j++) {
       
       passwordToSet = passwordToSet.replace(passwordToSet.charAt(Math.floor(Math.random() * portion)+((portion * j)+1)), rngPicker(arrCharacterArrs[j][1]));
