@@ -18,4 +18,4 @@ To use this application open it in any web browser, this screen will appear
 
 Then click the red generate password button.  Once clicked several prompts will appear at the top of the screen asking for details about your desired password.
 
-![Prompts](/Assets/Screen Shot 2020-09-22 at 5.19.21 PM.png)
+![Prompts](https://github.com/valadezMykel/Password-Generator/blob/master/Assets/Screen%20Shot%202020-09-22%20at%205.19.21%20PM.png)
