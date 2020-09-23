@@ -11,4 +11,10 @@ Any browser will be able to run this application
 Instal this application by cloning the repository from [github](https://github.com/valadezMykel/Password-Generator)
 or by going to the launched [application](https://valadezmykel.github.io/Password-Generator/)
 
+## Usage
 
+To use this application open it in any web browser, this screen will appear 
+![Fresh-page](Assets/Screen Shot 2020-09-22 at 5.19.13 PM.png)
+
+Then click the red generate password button.  Once clicked several prompts will appear at the top of the screen asking for details about your desired password.
+![Prompts](Assets/Screen Shot 2020-09-22 at 5.19.21 PM.png)
