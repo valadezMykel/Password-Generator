@@ -18,6 +18,9 @@
 // * clicking the Generate Password
 // * writing the password to the screen
 //
+
+
+
 var keepGoing = true;
 var lowerCaseArr = ["lower case", "abcdefghijklmnopqrstuvwxyz".split('')];
 var upperCaseArr = ["upper case", "abcdefghijklmnopqrstuvwxyz".toUpperCase().split('')];
@@ -40,11 +43,11 @@ function generatePassword(){
     if (lengthOfPassword === null){
       alert("Password Creation Canceled");
       keepGoing = false;
-      break;
+      return null;
     }
 
     // Checks to make sure the password is in acceptable ranges
-    parseInt(lengthOfPassword);
+    lengthOfPassword = parseInt(lengthOfPassword);
     if(8 <= lengthOfPassword && lengthOfPassword <= 128){
       alert("password length of "+lengthOfPassword+" has been selected");
       break;
@@ -88,7 +91,7 @@ function generatePassword(){
     // Show when no character types selected, useres can reslect or quit
     if(!confirm("you must select atleast one type of character to continue.  Would you like to reselect characters?")){
       keepGoing = false;
-      break;
+      return null;
     }
 
   }//End of while loop containing character selection
@@ -100,32 +103,28 @@ function generatePassword(){
     for(let i = 0; i < lengthOfPassword; i++){
       
       passwordToSet = passwordToSet+rngPicker((rngPicker(arrCharacterArrs))[1]);
+      // arrCharArr[lower,upper,,]
       
     }
-    console.log(passwordToSet);
+  
 
     // this code garenties that all selected character types apear
 
-    // for (let index = 0; index < arrCharacterArrs.length; index++) {
-    //   passwordToSetTemp = passwordToSetTemp+ rngPicker(arrCharacterArrs[index][1]);
-    // }
-    // return passwordToSet;
-
-
+    var portion = Math.floor(lengthOfPassword / arrCharacterArrs.length)
+    console.log(portion);
     for (let j = 0; j < arrCharacterArrs.length; j++) {
-      var portion = Math.floor(lengthOfPassword / arrCharacterArrs.length)
-      console.log(portion);
-      passwordToSet.replace(passwordToSet.charAt(Math.floor(Math.random() * portion)+((portion * j)+1)), rngPicker(arrCharacterArrs[j][1]));
+      
+      passwordToSet = passwordToSet.replace(passwordToSet.charAt(Math.floor(Math.random() * portion)+((portion * j)+1)), rngPicker(arrCharacterArrs[j][1]));
       
     }
-    console.log(passwordToSet);
+  
     
     return passwordToSet;
 
   }
 
 }// end of generate password function
-// TO DO : make the password contain all the slected types but in a way that is random
+// TO DO :
 
 
 // Pulls the first element from a multidimensional array
